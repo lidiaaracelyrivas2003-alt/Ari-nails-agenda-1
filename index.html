@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#d63384">
+<meta name="description" content="Agenda digital rosa glam para ARI NAILS: citas, clientas, servicios, anticipos, gastos e ingresos.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>ARI NAILS | Agenda Glam 2026</title>
+<style>
+:root{--pink:#f7c6dc;--hot:#d63384;--deep:#8e2458;--pale:#fff5fa;--gold:#c49a42;--ink:#51263d;--white:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#fff5fa,#fce1ed 55%,#fff9f1);font-family:Arial,sans-serif;color:var(--ink)}
+header{padding:24px 16px;text-align:center;background:linear-gradient(135deg,#f5b7d2,#d63384);color:#fff;position:relative;overflow:hidden}
+header:before,header:after{content:"✦";position:absolute;font-size:44px;color:#fff8;top:12px}header:before{left:8%}header:after{right:8%}
+header h1{margin:0;font-family:Georgia,serif;letter-spacing:3px;font-size:clamp(28px,5vw,42px)}header p{margin:8px 0 0;letter-spacing:1px}
+.wrap{max-width:1100px;margin:auto;padding:16px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:4px 0 18px}
+button,.button{border:0;border-radius:12px;padding:11px 15px;background:var(--hot);color:#fff;font-weight:700;cursor:pointer}
+button.secondary{background:#fff;color:var(--deep);border:1px solid #efb7d0}
+button.active{background:var(--deep);color:#fff}
+.panel{background:#ffffffdc;border:1px solid #f2c5d9;border-radius:18px;padding:16px;margin-bottom:16px;box-shadow:0 8px 25px #8e24580d}
+h2{font-family:Georgia,serif;color:var(--deep);margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}
+label{display:block;font-size:12px;font-weight:700;margin:0 0 5px;color:var(--deep)}
+input,select,textarea{width:100%;padding:11px;border:1px solid #e9b4cb;border-radius:10px;background:#fffafd;color:var(--ink);font:inherit;min-width:0}
+.service-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:8px}
+.service-chip{display:flex;align-items:center;gap:8px;padding:10px;border:1px solid #efbdd2;border-radius:11px;background:#fff7fb;font-size:13px;cursor:pointer;margin:0}
+.service-chip input{width:auto;accent-color:var(--hot);margin:0}
+textarea{min-height:70px;resize:vertical}
+.form-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px}
+.metric{background:linear-gradient(135deg,#fff,#ffe8f2);border:1px solid #f1c1d6;border-radius:14px;padding:13px}
+.metric small{display:block;color:#8e5470;margin-bottom:5px}.metric strong{font-size:21px;color:var(--deep)}
+table{width:100%;border-collapse:collapse;min-width:720px}th,td{padding:10px 8px;border-bottom:1px solid #f4d5e2;text-align:left;font-size:13px}th{background:#ffe6f1;color:var(--deep)}
+.table-wrap{overflow-x:auto;border-radius:12px}
+.badge{display:inline-block;padding:5px 8px;border-radius:20px;background:#ffe3ef;color:#8e2458;font-size:11px;font-weight:bold}
+.badge.confirmada{background:#e2f6e9;color:#267346}.badge.finalizada{background:#e8e5ff;color:#4b3a9c}
+.smallbtn{padding:7px 9px;font-size:12px;margin:2px}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.dayname{text-align:center;font-size:11px;font-weight:bold;color:var(--deep);padding:7px 0}
+.day{background:#fff;border:1px solid #f0c5d8;border-radius:10px;min-height:65px;padding:6px 3px;text-align:center;cursor:pointer;color:var(--ink)}
+.day.out{opacity:.35;cursor:default}.day.todaypick{background:#d63384;color:#fff}.day .count{display:block;font-size:10px;margin-top:4px;color:var(--hot)}.day.todaypick .count{color:#fff}
+.note{font-size:12px;color:#86546b;line-height:1.5}
+footer{text-align:center;padding:18px;color:#98647d;font-family:Georgia,serif}
+@media(max-width:560px){.wrap{padding:10px}.panel{padding:12px}header{padding:22px 10px}.calendar{gap:3px}.day{min-height:55px;font-size:12px;padding:5px 1px}.day .count{font-size:9px}button{padding:10px 12px}}
+</style>
+</head>
+<body>
+<header><h1>ARI NAILS</h1><p>✦ AGENDA GLAM · OCTUBRE — DICIEMBRE 2026 ✦</p></header>
+<div class="wrap">
+  <div class="nav">
+    <button class="active" data-view="agenda">💅 Agenda</button>
+    <button class="secondary" data-view="calendario">🗓️ Calendario</button>
+    <button class="secondary" data-view="finanzas">💸 Finanzas</button>
+    <button class="secondary" data-view="gastos">🛍️ Gastos</button>
+  </div>
+  <section id="agenda" class="view">
+    <div class="panel">
+      <div class="grid">
+        <div><label for="selectedDate">Fecha de las citas</label><input type="date" id="selectedDate" min="2026-10-19" max="2026-12-31"></div>
+        <div><label for="search">Buscar clienta</label><input id="search" placeholder="Nombre o teléfono"></div>
+      </div>
+      <p class="note">Selecciona una fecha para ver y registrar las citas de ese día. Los datos se guardan en este navegador de tu dispositivo.</p>
+    </div>
+    <div class="panel">
+      <h2 id="formTitle">✨ Agregar una cita</h2>
+      <form id="appointmentForm">
+        <input type="hidden" id="editId">
+        <div class="grid">
+          <div><label for="time">Hora</label><input id="time" type="time" required></div>
+          <div><label for="client">Nombre de la clienta *</label><input id="client" required placeholder="Nombre completo"></div>
+          <div><label for="phone">Teléfono</label><input id="phone" type="tel" placeholder="Número de contacto"></div>
+          <div style="grid-column:1/-1"><label>Servicios solicitados * (puedes elegir varios)</label><div id="serviceOptions" class="service-options">
+            <label class="service-chip"><input type="checkbox" name="services" value="Uñas acrílicas"> Uñas acrílicas</label>
+            <label class="service-chip"><input type="checkbox" name="services" value="Polygel"> Polygel</label>
+            <label class="service-chip"><input type="checkbox" name="services" value="Builder gel"> Builder gel</label>
+            <label class="service-chip"><input type="checkbox" name="services" value="Base rubber"> Base rubber</label>
+            <label class="service-chip"><input type="checkbox" name="services" value="Gel semipermanente"> Gel semipermanente</label>
+            <label class="service-chip"><input type="checkbox" name="services" value="Manicura spa"> Manicura spa</label>
+            <label class="service-chip"><input type="checkbox" name="services" value="Pedicura spa"> Pedicura spa</label>
+            <label class="service-chip"><input type="checkbox" name="services" value="Rizado de pestañas"> Rizado de pestañas</label>
+            <label class="service-chip"><input type="checkbox" name="services" value="Planchado de cejas"> Planchado de cejas</label>
+            <label class="service-chip"><input type="checkbox" name="services" value="Diseño de cejas"> Diseño de cejas</label>
+            <label class="service-chip"><input type="checkbox" name="services" value="Otro"> Otro</label>
+          </div><p class="note" style="margin:6px 0 0">Marca todos los servicios que realizará la clienta y escribe el precio total de la cita.</p></div>
+          <div><label for="design">Largo / diseño</label><input id="design" placeholder="Ej. largo #2, francesa"></div>
+          <div><label for="price">Precio total (Q) *</label><input id="price" type="number" min="0" step=".01" required placeholder="0.00"></div>
+          <div><label for="deposit">Anticipo recibido (Q)</label><input id="deposit" type="number" min="0" step=".01" value="0"></div>
+          <div><label for="status">Estado</label><select id="status"><option>Pendiente</option><option>Confirmada</option><option>Finalizada</option><option>Cancelada</option></select></div>
+        </div>
+        <div style="margin-top:10px"><label for="notes">Observaciones</label><textarea id="notes" placeholder="Detalles, preferencias, etc."></textarea></div>
+        <div class="form-actions"><button type="submit">💗 Guardar cita</button><button type="button" class="secondary" id="cancelEdit">Limpiar formulario</button></div>
+      </form>
+    </div>
+    <div class="panel">
+      <h2 id="dayHeading">💖 Citas del día</h2>
+      <div class="summary" id="dailySummary"></div>
+    </div>
+    <div class="panel">
+      <h2>Lista de clientas</h2>
+      <div class="table-wrap"><table><thead><tr><th>Hora</th><th>Clienta / contacto</th><th>Servicio</th><th>Precio</th><th>Anticipo</th><th>Saldo</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="appointmentRows"></tbody></table></div>
+      <p class="note">El saldo se calcula automáticamente: precio menos anticipo. Marca una cita como finalizada al terminar el servicio.</p>
+    </div>
+  </section>
+  <section id="calendario" class="view" hidden>
+    <div class="panel"><h2>🗓️ Calendario de citas</h2><div class="grid" style="margin-bottom:12px"><div><label for="monthSelect">Mes</label><select id="monthSelect"><option value="2026-9">Octubre 2026</option><option value="2026-10">Noviembre 2026</option><option value="2026-11">Diciembre 2026</option></select></div></div><div id="calendarGrid" class="calendar"></div><p class="note">Toca un día para abrir su agenda. Los puntos muestran cuántas citas tienes registradas.</p></div>
+  </section>
+  <section id="finanzas" class="view" hidden>
+    <div class="panel"><h2>💸 Resumen financiero</h2><div class="grid"><div><label for="financeMonth">Mes</label><select id="financeMonth"><option value="2026-9">Octubre 2026</option><option value="2026-10">Noviembre 2026</option><option value="2026-11">Diciembre 2026</option></select></div></div><div class="summary" id="financeSummary" style="margin-top:14px"></div><p class="note">Los ingresos se calculan con citas finalizadas. Los anticipos y saldos de citas se muestran por separado en la agenda.</p></div>
+  </section>
+  <section id="gastos" class="view" hidden>
+    <div class="panel"><h2>🛍️ Registro de gastos</h2><form id="expenseForm"><div class="grid"><div><label for="expenseDate">Fecha</label><input type="date" id="expenseDate" min="2026-10-19" max="2026-12-31" required></div><div><label for="expenseName">Material o gasto</label><input id="expenseName" required placeholder="Ej. acrílico, limas"></div><div><label for="expenseAmount">Monto (Q)</label><input id="expenseAmount" type="number" min="0.01" step=".01" required></div></div><div class="form-actions"><button type="submit">➕ Guardar gasto</button></div></form></div>
+    <div class="panel"><h2>Gastos registrados</h2><div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Descripción</th><th>Monto</th><th>Acción</th></tr></thead><tbody id="expenseRows"></tbody></table></div></div>
+  </section>
+  <footer>“Cada detalle cuenta, cada clienta es especial” ✨<br><small>ARI NAILS · Agenda de citas 2026</small></footer>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const KEY='ariNailsAgenda2026_v1';
+let data={appointments:[],expenses:[]};
+try{data=JSON.parse(localStorage.getItem(KEY))||data}catch(e){}
+const today='2026-10-19';
+$('selectedDate').value=today;$('expenseDate').value=today;
+const money=n=>'Q'+(Number(n)||0).toLocaleString('es-GT',{minimumFractionDigits:2,maximumFractionDigits:2});
+const save=()=>localStorage.setItem(KEY,JSON.stringify(data));
+const dateFmt=s=>{if(!s)return '';return new Date(s+'T12:00:00').toLocaleDateString('es-GT',{weekday:'long',day:'numeric',month:'long',year:'numeric'})};
+const monthKey=s=>s.slice(0,7);
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function resetForm(){ $('appointmentForm').reset();$('editId').value='';$('deposit').value=0;$('status').value='Pendiente';document.querySelectorAll('input[name="services"]').forEach(x=>x.checked=false);$('formTitle').textContent='✨ Agregar una cita';}
+function renderAppointments(){
+ const date=$('selectedDate').value, q=$('search').value.trim().toLowerCase();
+ const list=data.appointments.filter(a=>a.date===date&&(!q||(a.client+' '+a.phone).toLowerCase().includes(q))).sort((a,b)=>a.time.localeCompare(b.time));
+ $('dayHeading').textContent='💖 '+dateFmt(date);
+ $('appointmentRows').innerHTML=list.map(a=>`<tr><td>${esc(a.time||'—')}</td><td><b>${esc(a.client)}</b><br><small>${esc(a.phone||'')}</small></td><td>${esc(a.service)}<br><small>${esc(a.design||'')}</small></td><td>${money(a.price)}</td><td>${money(a.deposit)}</td><td><b>${money(Math.max(0,a.price-a.deposit))}</b></td><td><span class="badge ${a.status.toLowerCase()}">${esc(a.status)}</span></td><td><button class="smallbtn secondary" onclick="editAppointment('${a.id}')">Editar</button><button class="smallbtn" onclick="toggleDone('${a.id}')">${a.status==='Finalizada'?'Reabrir':'Finalizar'}</button><button class="smallbtn" style="background:#8e2458" onclick="deleteAppointment('${a.id}')">Borrar</button></td></tr>`).join('')||'<tr><td colspan="8">Todavía no hay citas para esta fecha. 💗</td></tr>';
+ const day=data.appointments.filter(a=>a.date===date&&a.status!=='Cancelada');
+ const received=day.reduce((s,a)=>s+(Number(a.deposit)||0),0), outstanding=day.reduce((s,a)=>s+Math.max(0,(+a.price||0)-(+a.deposit||0)),0), done=day.filter(a=>a.status==='Finalizada').reduce((s,a)=>s+(+a.price||0),0);
+ $('dailySummary').innerHTML=`<div class="metric"><small>Citas registradas</small><strong>${day.length}</strong></div><div class="metric"><small>Precios de citas finalizadas</small><strong>${money(done)}</strong></div><div class="metric"><small>Anticipos anotados</small><strong>${money(received)}</strong></div><div class="metric"><small>Saldos pendientes</small><strong>${money(outstanding)}</strong></div>`;
+}
+$('appointmentForm').addEventListener('submit',e=>{e.preventDefault();const selectedServices=[...document.querySelectorAll('input[name="services"]:checked')].map(x=>x.value);if(!selectedServices.length){alert('Selecciona al menos un servicio, por favor.');return;}const id=$('editId').value||('a'+Date.now());const a={id,date:$('selectedDate').value,time:$('time').value,client:$('client').value.trim(),phone:$('phone').value.trim(),service:selectedServices.join(', '),design:$('design').value.trim(),price:+$('price').value,deposit:+$('deposit').value||0,status:$('status').value,notes:$('notes').value.trim()};if(a.deposit>a.price&&!confirm('El anticipo es mayor que el precio. ¿Quieres guardarlo de todos modos?'))return;const i=data.appointments.findIndex(x=>x.id===id);if(i>=0)data.appointments[i]=a;else data.appointments.push(a);save();resetForm();renderAll();});
+window.editAppointment=id=>{const a=data.appointments.find(x=>x.id===id);if(!a)return;$('selectedDate').value=a.date;['time','client','phone','design','price','deposit','status','notes'].forEach(k=>$(k).value=a[k]??'');const chosen=(a.service||'').split(',').map(x=>x.trim());document.querySelectorAll('input[name="services"]').forEach(x=>x.checked=chosen.includes(x.value));$('editId').value=a.id;$('formTitle').textContent='✏️ Editar cita';window.scrollTo({top:0,behavior:'smooth'});renderAppointments();};
+window.toggleDone=id=>{const a=data.appointments.find(x=>x.id===id);if(a){a.status=a.status==='Finalizada'?'Confirmada':'Finalizada';save();renderAll()}};
+window.deleteAppointment=id=>{if(confirm('¿Borrar esta cita?')){data.appointments=data.appointments.filter(a=>a.id!==id);save();renderAll()}};
+$('cancelEdit').onclick=resetForm;$('selectedDate').addEventListener('change',()=>{resetForm();renderAll()});$('search').addEventListener('input',renderAppointments);
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-view]').forEach(x=>{x.classList.toggle('active',x===b);x.classList.toggle('secondary',x!==b)});document.querySelectorAll('.view').forEach(v=>v.hidden=v.id!==b.dataset.view);renderAll()}));
+function renderCalendar(){const [yr,mo]= $('monthSelect').value.split('-').map(Number), first=new Date(yr,mo,1), last=new Date(yr,mo+1,0);let out=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'].map(x=>`<div class="dayname">${x}</div>`).join('');let offset=(first.getDay()+6)%7;for(let i=0;i<offset;i++)out+='<div class="day out"></div>';for(let d=1;d<=last.getDate();d++){const s=`${yr}-${String(mo+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,count=data.appointments.filter(a=>a.date===s&&a.status!=='Cancelada').length,enabled=s>='2026-10-19'&&s<='2026-12-31';out+=`<button class="day ${s===$('selectedDate').value?'todaypick':''} ${enabled?'':'out'}" ${enabled?`onclick="pickDate('${s}')"`:''}>${d}${count?`<span class="count">💗 ${count}</span>`:''}</button>`}$('calendarGrid').innerHTML=out;}
+window.pickDate=s=>{$('selectedDate').value=s;document.querySelector('[data-view="agenda"]').click();renderAll()};
+function renderFinance(){const m=$('financeMonth').value;const apps=data.appointments.filter(a=>monthKey(a.date)===m&&a.status!=='Cancelada'),done=apps.filter(a=>a.status==='Finalizada'),expenses=data.expenses.filter(x=>monthKey(x.date)===m).reduce((s,x)=>s+(+x.amount||0),0),sales=done.reduce((s,a)=>s+(+a.price||0),0),deposits=apps.reduce((s,a)=>s+(+a.deposit||0),0),balance=apps.reduce((s,a)=>s+Math.max(0,(+a.price||0)-(+a.deposit||0)),0);$('financeSummary').innerHTML=`<div class="metric"><small>Servicios finalizados</small><strong>${done.length}</strong></div><div class="metric"><small>Ventas de servicios finalizados</small><strong>${money(sales)}</strong></div><div class="metric"><small>Anticipos registrados</small><strong>${money(deposits)}</strong></div><div class="metric"><small>Saldos por cobrar</small><strong>${money(balance)}</strong></div><div class="metric"><small>Gastos del mes</small><strong>${money(expenses)}</strong></div><div class="metric"><small>Ventas menos gastos</small><strong>${money(sales-expenses)}</strong></div>`;}
+$('financeMonth').onchange=renderFinance;$('monthSelect').onchange=renderCalendar;
+$('expenseForm').addEventListener('submit',e=>{e.preventDefault();data.expenses.push({id:'e'+Date.now(),date:$('expenseDate').value,name:$('expenseName').value.trim(),amount:+$('expenseAmount').value});save();$('expenseForm').reset();$('expenseDate').value=$('selectedDate').value;renderAll()});
+window.deleteExpense=id=>{if(confirm('¿Borrar este gasto?')){data.expenses=data.expenses.filter(x=>x.id!==id);save();renderAll()}};
+function renderExpenses(){$('expenseRows').innerHTML=data.expenses.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.name)}</td><td>${money(x.amount)}</td><td><button class="smallbtn" onclick="deleteExpense('${x.id}')">Borrar</button></td></tr>`).join('')||'<tr><td colspan="4">Todavía no hay gastos registrados.</td></tr>'}
+function renderAll(){renderAppointments();renderCalendar();renderFinance();renderExpenses()}
+renderAll();
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) { window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(() => {})); }
+</script>
+</body>
+</html>
